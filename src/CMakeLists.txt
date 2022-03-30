@@ -1,5 +1,3 @@
-option(Bomb_BUILD_STATIC OFF)
-
 if (Bomb_BUILD_STATIC)
     set(Bomb_BUILD_TYPE STATIC)
 else()
@@ -12,6 +10,8 @@ add_library(bomb ${Bomb_BUILD_TYPE})
 
 target_include_directories(bomb PUBLIC ${Bomb_SOURCE_DIR}/include)
 
-target_link_libraries(bomb PUBLIC Qt5::Network)
+target_link_libraries(bomb PUBLIC Qt5::Core)
 
 target_compile_definitions(bomb PUBLIC BOMB_LIB BOMB_${Bomb_BUILD_TYPE} PRIVATE BOMB_BUILD)
+
+add_subdirectory(kernel)
